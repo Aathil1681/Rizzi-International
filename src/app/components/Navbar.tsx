@@ -25,15 +25,15 @@ export default function Navbar() {
   const contactInfo = [
     {
       icon: <FiPhone size={20} color="#636363" />,
-      lines: ["Call Us: +971 48133777", "(Mon - Sat)"],
+      lines: ["Call Us: +94 77 152 7111", "(Mon - Sat)"],
     },
     {
       icon: <FiMail size={20} color="#636363" />,
-      lines: ["Mail us for help:", "Info@lalsgroup.com"],
+      lines: ["Mail us for help:", "info@rizziinternational.com"],
     },
     {
       icon: <FiMapPin size={20} color="#636363" />,
-      lines: ["Jebel Ali Free Zone", "South"],
+      lines: ["244/C,KKP Road,Kalmunai", "Sri Lanka"],
     },
   ];
 

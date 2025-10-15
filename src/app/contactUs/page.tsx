@@ -227,7 +227,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <p className="text-gray-600 leading-relaxed">
-                  Tel: +94 771527 111
+                  Tel: +94 77 152 7111
                 </p>
               </div>
             </div>
