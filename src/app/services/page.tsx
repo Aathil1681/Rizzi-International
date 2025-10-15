@@ -27,7 +27,7 @@ const services: Service[] = [
     description:
       "Partner with Rizzi International to access a curated portfolio of the world's finest luxury products for your business, from fine jewelry to high fashion.",
     imageUrl:
-      "https://images.unsplash.com/photo-1597358371607-5987dd7da3d6?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=387",
+      "https://images.pexels.com/photos/2983364/pexels-photo-2983364.jpeg",
   },
   {
     icon: ShoppingBag,
@@ -35,7 +35,7 @@ const services: Service[] = [
     description:
       "We create unforgettable retail experiences. Our platforms offer a world of refined living, showcasing premium products with elegance and quality.",
     imageUrl:
-      "https://images.pexels.com/photos/935760/pexels-photo-935760.jpeg",
+      "https://images.pexels.com/photos/5622859/pexels-photo-5622859.jpeg",
   },
 ];
 
@@ -77,7 +77,6 @@ export default function ServicesPage() {
     if (!el) return;
 
     const handleScroll = () => {
-      const scrollPosition = el.scrollLeft + el.offsetWidth / 2;
       const children = Array.from(el.children);
       let closestIndex = 0;
       let closestDistance = Infinity;
@@ -273,7 +272,7 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Description hidden initially */}
-                <p className="text-gray-200 text-sm mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="text-gray-200 text-sm mt-3 opacity-0 group-hover:opacity-80 transition-opacity duration-500">
                   {service.description}
                 </p>
               </div>

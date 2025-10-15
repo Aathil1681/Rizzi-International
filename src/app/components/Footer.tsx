@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
@@ -55,19 +56,19 @@ export default function Footer() {
           </h3>
           <ul className="space-y-1 text-sm">
             <li>
-              <a href="/" className="hover:text-gray-900">
+              <Link href="/" className="hover:text-gray-900">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/services" className="hover:text-gray-900">
+              <Link href="/services" className="hover:text-gray-900">
                 Services
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/about" className="hover:text-gray-900">
+              <Link href="/about" className="hover:text-gray-900">
                 About Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -79,19 +80,22 @@ export default function Footer() {
           </h3>
           <ul className="space-y-1 text-sm">
             <li>
-              <a href="/careers" className="hover:text-gray-900">
+              <Link href="/careers" className="hover:text-gray-900">
                 Careers
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/contactUs" className="hover:text-gray-900">
+              <Link href="/contactUs" className="hover:text-gray-900">
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/terms-and-conditions" className="hover:text-gray-900">
+              <Link
+                href="/terms-and-conditions"
+                className="hover:text-gray-900"
+              >
                 Terms & Conditions
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

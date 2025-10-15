@@ -3,6 +3,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Image from "next/image";
 
 // Hook to detect screen size
 const useMediaQuery = (query: string): boolean => {
@@ -48,10 +49,12 @@ function ImageCard({ src, title, className }: ImageCardProps) {
       variants={gridItemVariants}
       className={`relative overflow-hidden group rounded-lg flex-shrink-0 ${className}`}
     >
-      <img
+      <Image
         src={src}
         alt={title}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        fill
+        style={{ objectFit: "cover" }}
+        className="absolute inset-0 transition-transform duration-500 group-hover:scale-110"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
       <div className="absolute inset-0 flex items-end p-4">
@@ -134,10 +137,11 @@ export default function OurCollective() {
             className="relative w-full aspect-video rounded-lg overflow-hidden"
             variants={gridItemVariants}
           >
-            <img
-              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80"
+            <Image
+              src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg"
               alt="Business professionals in a meeting"
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              style={{ objectFit: "cover" }}
             />
           </motion.div>
         </motion.div>

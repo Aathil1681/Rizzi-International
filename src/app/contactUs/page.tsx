@@ -98,7 +98,7 @@ export default function ContactPage() {
             </h1>
             <p className="text-gray-600 leading-relaxed">
               Whatever your interest with the group, please feel free to contact
-              us. Enter the information below and press "Submit".
+              us. Enter the information below and press &quot;Submit&quot;.
             </p>
           </motion.div>
 
@@ -195,12 +195,12 @@ export default function ContactPage() {
       <section className="bg-gray-50 py-16 md:py-24">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-16">
-            LET'S START A CONVERSATION
+            LET&apos;S START A CONVERSATION
           </h2>
 
           <div className="mt-10 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between md:space-x-8 space-y-12 md:space-y-0">
             {/* Left Side - Text Content */}
-            <div className="flex flex-col items-center md:items-start justify-start lg:pl-20 w-full md:w-1/2 space-y-6 md:space-y-10 ">
+            <div className="flex flex-col items-center md:items-start justify-start lg:pl-20 w-full md:w-1/2 space-y-6 md:space-y-10">
               {/* Meet Us */}
               <div className="text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start mb-4">
@@ -221,7 +221,7 @@ export default function ContactPage() {
               {/* Call Us */}
               <div className="text-center md:text-left">
                 <div className="flex items-center justify-center md:justify-start mb-4">
-                  <Phone className="text-blue-600 size-7 mr-3 " />
+                  <Phone className="text-blue-600 size-7 mr-3" />
                   <div className="mt-3">
                     <h3 className="text-xl font-semibold">CALL US.</h3>
                   </div>

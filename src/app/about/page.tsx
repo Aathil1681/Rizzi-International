@@ -62,7 +62,7 @@ export default function About() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: "easeInOut" }}
-            className={` text-5xl md:text-7xl font-bold tracking-wider mb-4 bg-clip-text text-transparent !bg-gradient-to-r from-white via-gray-300 to-gray-400 animate-gradient`}
+            className="text-5xl md:text-7xl font-bold tracking-wider mb-4 bg-clip-text text-transparent !bg-gradient-to-r from-white via-gray-300 to-gray-400 animate-gradient"
           >
             HOUSE OF LUXURY
           </motion.h1>
@@ -167,13 +167,11 @@ export default function About() {
                 visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
               }}
             >
-              <h2
-                className={` text-4xl font-bold mb-4 uppercase tracking-wider border-b-2 border-brand-gold pb-2 inline-block`}
-              >
+              <h2 className="text-4xl font-bold mb-4 uppercase tracking-wider border-b-2 border-brand-gold pb-2 inline-block">
                 Our Mission
               </h2>
               <p className="text-gray-200 text-lg leading-relaxed mt-4">
-                Our journey is about more than just commerce; it's about
+                Our journey is about more than just commerce; it&apos;s about
                 becoming a trusted name and a staple in modern luxury. We are
                 driven by a passion for excellence — ensuring that every
                 interaction, every service, and every product echoes our
@@ -189,9 +187,7 @@ export default function About() {
                 visible: { opacity: 1, x: 0, transition: { duration: 0.7 } },
               }}
             >
-              <h2
-                className={` text-4xl font-bold mb-4 uppercase tracking-wider border-b-2 border-brand-gold pb-2 inline-block`}
-              >
+              <h2 className="text-4xl font-bold mb-4 uppercase tracking-wider border-b-2 border-brand-gold pb-2 inline-block">
                 Our Vision
               </h2>
               <p className="text-gray-200 text-lg leading-relaxed mt-4">
@@ -216,11 +212,11 @@ export default function About() {
           viewport={{ once: true, amount: 0.5 }}
           variants={fadeIn}
         >
-          <h2 className={` text-4xl font-bold text-brand-blue`}>
+          <h2 className="text-4xl font-bold text-brand-blue">
             Our Brand Family
           </h2>
-          <div className="w-24 h-0.5 bg-brand-gold mx-auto my-4 "></div>
-          <p className="text-gray-600 mt-2 pl-10 pr-10">
+          <div className="w-24 h-0.5 bg-brand-gold mx-auto my-4"></div>
+          <p className="text-gray-600 mt-2 px-10">
             Rizzi International is a leading global enterprise specializing in
             the export and import of luxury products. From exquisite jewelry and
             premium watches to high-end fashion and lifestyle goods, we curate
@@ -247,11 +243,7 @@ export default function About() {
             onHoverEnd={() =>
               marqueeControls.start({
                 x: ["0%", "-100%"],
-                transition: {
-                  ease: "linear",
-                  duration: 180,
-                  repeat: Infinity,
-                },
+                transition: { ease: "linear", duration: 180, repeat: Infinity },
               })
             }
           >

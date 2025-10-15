@@ -1,14 +1,17 @@
+import Image from "next/image";
 import { CVUploadForm } from "./CVUploadForm";
 
 export default function OpeningsPage() {
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
-      <div className="relative h-80">
-        <img
+      <div className="relative h-80 w-full">
+        <Image
           src="https://images.pexels.com/photos/4963437/pexels-photo-4963437.jpeg"
           alt="Woman listening to music"
-          className="w-full h-full object-cover"
+          fill
+          style={{ objectFit: "cover" }}
+          className="w-full h-full"
         />
         <div className="absolute inset-0 bg-black/40 bg-opacity-30" />
       </div>
