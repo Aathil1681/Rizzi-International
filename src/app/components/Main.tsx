@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Settings } from "lucide-react";
 
 // Slide data
 const slides = [
@@ -46,19 +47,43 @@ const slideVariants = {
 };
 
 // Loading screen
-// Loader with logo glow effect
-const Loader = () => (
-  <div className="absolute inset-0 flex items-center justify-center bg-white">
-    <div className="flex flex-col items-center">
-      {/* Logo with glow */}
-      <img
-        src="/logo.png"
-        alt="Logo"
-        className="w-24 h-24 sm:w-32 sm:h-32 animate-pulse-glow"
-      />
+
+const Loader = () => {
+  const [showLoader, setShowLoader] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLoader(false), 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!showLoader) return null;
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
+      <div className="relative w-20 h-20">
+        <div className="absolute inset-0 flex items-center justify-center gear-spin">
+          <Settings className="w-16 h-16 text-blue-900" />
+        </div>
+      </div>
+
+      <style jsx>{`
+        .gear-spin {
+          animation: spin 3s linear infinite; /* Smooth 3-second rotation */
+          transform-origin: 50% 50%;
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
-  </div>
-);
+  );
+};
 
 export default function Main() {
   const [current, setCurrent] = useState(0);
@@ -151,7 +176,7 @@ export default function Main() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -50, opacity: 0 }}
                   transition={{ duration: 0.8 }}
-                  className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 !text-white"
+                  className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 lg:pl-8 !text-white"
                 >
                   {slides[current].title}
                 </motion.h1>
@@ -161,7 +186,7 @@ export default function Main() {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
                   transition={{ duration: 0.8, delay: 0.3 }}
-                  className="text-base sm:text-lg md:text-xl !text-gray-200"
+                  className="text-base sm:text-lg md:text-xl !text-gray-200 lg:pl-8"
                 >
                   {slides[current].desc}
                 </motion.p>

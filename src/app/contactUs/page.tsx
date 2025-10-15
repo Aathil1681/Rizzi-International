@@ -4,7 +4,6 @@ import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import { getNames } from "country-list";
-import emailjs from "@emailjs/browser";
 import { toast, Toaster } from "sonner";
 
 export default function ContactPage() {
@@ -18,7 +17,6 @@ export default function ContactPage() {
     message: "",
   });
 
-  // Get all countries alphabetically
   const countries = getNames().sort((a, b) => a.localeCompare(b));
 
   const handleChange = (
@@ -35,25 +33,33 @@ export default function ContactPage() {
     const loadingToast = toast.loading("Submitting...");
 
     try {
-      await emailjs.send(
-        "service_saneej", // Replace with your EmailJS Service ID
-        "template_fiuf7lj", // Replace with your EmailJS Template ID
-        formData,
-        "qJgV7P_mmU2iT2J6M" // Replace with your EmailJS Public Key
-      );
-
-      toast.dismiss(loadingToast);
-      toast.success("Message sent successfully!", { duration: 4000 });
-
-      setFormData({
-        fullName: "",
-        mobile: "",
-        email: "",
-        address: "",
-        city: "",
-        country: "",
-        message: "",
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "7592de58-a002-41d1-9278-e2d42c5eb114", // Replace with your Web3Forms API key
+          subject: "New Contact Form Submission",
+          ...formData,
+        }),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.dismiss(loadingToast);
+        toast.success("Message sent successfully!", { duration: 4000 });
+        setFormData({
+          fullName: "",
+          mobile: "",
+          email: "",
+          address: "",
+          city: "",
+          country: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send message");
+      }
     } catch (error) {
       toast.dismiss(loadingToast);
       console.error(error);
@@ -65,7 +71,6 @@ export default function ContactPage() {
 
   return (
     <div className="bg-white text-gray-800 font-sans">
-      {/* --- Sonner Toaster --- */}
       <Toaster position="top-right" richColors />
 
       {/* Hero Section */}

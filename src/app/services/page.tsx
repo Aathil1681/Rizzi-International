@@ -59,6 +59,18 @@ const itemVariants: Variants = {
 export default function ServicesPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isNestScreen, setIsNestScreen] = useState(false); // Added Nest Hub state
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      // Nest Hub / Nest Hub Max typical widths: 480px–600px
+      setIsNestScreen(width >= 480 && width <= 600);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const el = scrollRef.current;
@@ -126,58 +138,113 @@ export default function ServicesPage() {
         viewport={{ once: true, amount: 0.3 }}
       >
         {/* --- Mobile Scroll --- */}
-        <div className="relative">
-          <div
-            ref={scrollRef}
-            className="flex md:hidden space-x-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
-          >
-            {services.map((service, i) => {
-              const isActive = i === activeIndex;
-              return (
-                <motion.div
-                  key={service.title}
-                  className="relative min-w-[70%] rounded-lg overflow-hidden shadow-2xl snap-center flex-shrink-0 group"
-                  variants={itemVariants}
-                >
-                  <Image
-                    src={service.imageUrl}
-                    alt={service.title}
-                    width={600}
-                    height={800}
-                    className="w-full h-80 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                  />
-
-                  <div className="absolute inset-0 flex flex-col justify-end text-white transition-all duration-500">
-                    <div
-                      className={`absolute inset-0 transition-opacity duration-500 ${
-                        isActive
-                          ? "bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-100"
-                          : "opacity-0"
-                      }`}
+        {!isNestScreen && (
+          <div className="relative">
+            <div
+              ref={scrollRef}
+              className="flex md:hidden space-x-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+            >
+              {services.map((service, i) => {
+                const isActive = i === activeIndex;
+                return (
+                  <motion.div
+                    key={service.title}
+                    className="relative text-lg min-w-[70%] rounded-lg overflow-hidden shadow-2xl snap-center flex-shrink-0 group"
+                    variants={itemVariants}
+                  >
+                    <Image
+                      src={service.imageUrl}
+                      alt={service.title}
+                      width={600}
+                      height={800}
+                      className="w-full h-80 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                     />
-                    <div className="relative z-10 p-6 transition-all duration-500">
-                      <service.icon className="w-10 h-10 mb-2 text-blue-200" />
-                      <h3 className="text-xl font-bold mb-2">
-                        {service.title}
-                      </h3>
-                      {isActive && (
-                        <p className="text-gray-200 text-sm transition-opacity duration-500">
-                          {service.description}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
 
-          {/* Gradient fade at right edge (mobile) */}
-          <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white/50 md:hidden pointer-events-none" />
+                    <div className="absolute inset-0 flex flex-col justify-end text-white transition-all duration-500">
+                      <div
+                        className={`absolute inset-0 transition-opacity duration-500 ${
+                          isActive
+                            ? "bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-100"
+                            : "opacity-0"
+                        }`}
+                      />
+                      <div className="relative z-10 p-6 transition-all duration-500">
+                        <service.icon className="w-10 h-10 mb-2 text-blue-200" />
+                        <h3 className="text-xl font-bold mb-2">
+                          {service.title}
+                        </h3>
+                        {isActive && (
+                          <p className="text-gray-200 !text-sm transition-opacity duration-500">
+                            {service.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Gradient fade at right edge (mobile) */}
+            <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-white/50 md:hidden pointer-events-none" />
+          </div>
+        )}
+
+        {/* --- Nest Hub / Nest Hub Max Static Section --- */}
+        {isNestScreen && (
+          <div className="flex flex-col gap-6 mt-6 px-4 md:hidden">
+            {services.map((service) => (
+              <div
+                key={service.title}
+                className="relative rounded-lg overflow-hidden shadow-2xl"
+              >
+                <Image
+                  src={service.imageUrl}
+                  alt={service.title}
+                  width={600}
+                  height={500}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                  <service.icon className="w-8 h-8 mb-1 text-blue-200" />
+                  <h3 className="text-lg font-bold">{service.title}</h3>
+                  <p className="text-gray-200 text-sm mt-1">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* --- iPad / Other Middle Screens --- */}
+        <div className="hidden md:flex lg:hidden flex-col gap-6 mt-10 px-4">
+          {services.map((service) => (
+            <div
+              key={service.title}
+              className="relative rounded-lg overflow-hidden shadow-2xl"
+            >
+              <Image
+                src={service.imageUrl}
+                alt={service.title}
+                width={600}
+                height={500}
+                className="w-full h-[400px] object-cover"
+              />
+
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                <service.icon className="w-10 h-10 mb-2 text-blue-200" />
+                <h3 className="text-2xl font-bold">{service.title}</h3>
+                <p className="text-gray-200 text-sm mt-2">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* --- Desktop Grid --- */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10 px-4 lg:px-15 lg:p-10">
+        <div className="hidden lg:grid lg:grid-cols-3 gap-10 mt-10 px-4 lg:px-15 lg:p-10">
           {services.map((service) => (
             <motion.div
               key={service.title}
