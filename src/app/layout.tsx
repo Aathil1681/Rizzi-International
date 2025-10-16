@@ -4,6 +4,7 @@ import { Montserrat } from "next/font/google";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollTopButton from "./components/ScrolltoTop";
+import GoldRateButton from "./components/GoldRateButton";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <Navbar />
         {children}
+        <GoldRateButton />
         <ScrollTopButton />
         <Footer />
       </body>

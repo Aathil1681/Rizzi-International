@@ -122,3 +122,8 @@ a:hover {
   animation: glow 1.5s infinite ease-in-out;
   border-radius: 50%;
 }
+@supports (-webkit-touch-callout: none) {
+  .ios-fix {
+    height: -webkit-fill-available;
+  }
+}
