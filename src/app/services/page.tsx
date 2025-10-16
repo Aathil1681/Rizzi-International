@@ -59,12 +59,11 @@ const itemVariants: Variants = {
 export default function ServicesPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isNestScreen, setIsNestScreen] = useState(false); // Added Nest Hub state
+  const [isNestScreen, setIsNestScreen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      // Nest Hub / Nest Hub Max typical widths: 480px–600px
       setIsNestScreen(width >= 480 && width <= 600);
     };
     handleResize();
@@ -101,7 +100,14 @@ export default function ServicesPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div
+      className="min-h-[100dvh] bg-gray-50 overflow-x-hidden"
+      style={{
+        paddingTop: "env(safe-area-inset-top)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+        WebkitTextSizeAdjust: "100%", // Prevent Safari font zooming
+      }}
+    >
       {/* --- Hero Section --- */}
       <section className="bg-gray-900 text-white py-20 px-8 md:px-16">
         <div className="max-w-7xl mx-auto text-center mt-10">
@@ -141,7 +147,7 @@ export default function ServicesPage() {
           <div className="relative">
             <div
               ref={scrollRef}
-              className="flex md:hidden space-x-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide"
+              className="flex md:hidden space-x-4 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide overscroll-x-contain"
             >
               {services.map((service, i) => {
                 const isActive = i === activeIndex;
@@ -157,6 +163,7 @@ export default function ServicesPage() {
                       width={600}
                       height={800}
                       className="w-full h-80 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                      priority
                     />
 
                     <div className="absolute inset-0 flex flex-col justify-end text-white transition-all duration-500">
@@ -203,6 +210,7 @@ export default function ServicesPage() {
                   width={600}
                   height={500}
                   className="w-full h-64 object-cover"
+                  priority
                 />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                   <service.icon className="w-8 h-8 mb-1 text-blue-200" />
@@ -229,8 +237,8 @@ export default function ServicesPage() {
                 width={600}
                 height={500}
                 className="w-full h-[400px] object-cover"
+                priority
               />
-
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white bg-gradient-to-t from-black/80 via-black/50 to-transparent">
                 <service.icon className="w-10 h-10 mb-2 text-blue-200" />
                 <h3 className="text-2xl font-bold">{service.title}</h3>
@@ -256,22 +264,17 @@ export default function ServicesPage() {
                 width={600}
                 height={800}
                 className="w-full h-[500px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+                priority
               />
 
-              {/* Desktop overlay */}
               <div className="absolute inset-0 flex flex-col justify-end p-6 text-white transition-all duration-500">
-                {/* Gradient for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent transition-opacity duration-500 opacity-100 group-hover:from-black/70 group-hover:via-black/40" />
-
-                {/* Title + Icon move up on hover */}
                 <div className="relative z-10 transform transition-all duration-500 ease-in-out group-hover:-translate-y-30">
                   <service.icon className="w-10 h-10 mb-2 text-blue-200" />
                   <div className="-mb-35">
-                    <h3 className="text-2xl font-bold ">{service.title}</h3>
+                    <h3 className="text-2xl font-bold">{service.title}</h3>
                   </div>
                 </div>
-
-                {/* Description hidden initially */}
                 <p className="text-gray-200 text-sm mt-3 opacity-0 group-hover:opacity-80 transition-opacity duration-500">
                   {service.description}
                 </p>

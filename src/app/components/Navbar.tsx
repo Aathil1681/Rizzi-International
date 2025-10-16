@@ -45,15 +45,24 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // Scroll behavior
+  // ✅ Fixed Scroll Behavior (iPhone safe)
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-      setShow(window.scrollY <= lastScrollY);
-      setLastScrollY(window.scrollY);
+      const currentY = window.scrollY;
+      const scrollY = Math.max(0, currentY); // prevent negative scroll (iPhone bounce)
+
+      setIsScrolled(scrollY > 20);
+
+      if (scrollY < 10) {
+        setShow(true); // always show navbar near top
+      } else {
+        setShow(scrollY < lastScrollY);
+      }
+
+      setLastScrollY(scrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
