@@ -40,6 +40,7 @@ const useAnimatedPrice = (price: number | null) => {
       onUpdate: (latest: number) => setAnimatedPrice(latest),
     });
     return controls.stop;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [price]);
 
   return animatedPrice.toFixed(2);
@@ -63,15 +64,16 @@ export default function GoldRateButton() {
   const [history, setHistory] = useState<number[]>(
     Array.from({ length: 30 }, () => 4200 + Math.random() * 50)
   );
-  const [buyersRatio, setBuyersRatio] = useState(65 + Math.random() * 20);
-  const [isLoading, setIsLoading] = useState(true);
+  // eslint: mark unused vars with _
+  const [_buyersRatio, _setBuyersRatio] = useState(65 + Math.random() * 20);
+  const [_isLoading, _setIsLoading] = useState(true);
 
   // Fetch live gold prices
   useEffect(() => {
     if (!open) return;
 
     const fetchGoldRate = async () => {
-      setIsLoading(true);
+      _setIsLoading(true);
       try {
         const res = await fetch("/api/gold", { cache: "no-store" });
         if (!res.ok)
@@ -80,7 +82,7 @@ export default function GoldRateButton() {
 
         setPriceData(data);
         setHistory((prev) => [...prev.slice(1), data["24K"]]);
-        setBuyersRatio(65 + Math.random() * 20);
+        _setBuyersRatio(65 + Math.random() * 20);
       } catch (err) {
         console.error("Failed to fetch gold price:", err);
         setPriceData((prev) => {
@@ -95,7 +97,7 @@ export default function GoldRateButton() {
           };
         });
       } finally {
-        setIsLoading(false);
+        _setIsLoading(false);
       }
     };
 
@@ -130,7 +132,6 @@ export default function GoldRateButton() {
     ],
   };
 
-  // Typed as ChartOptions<'line'>; we cast scales entries to `any` to avoid strict Chart.js scale-type issues.
   const chartOptions: ChartOptions<"line"> = {
     responsive: true,
     maintainAspectRatio: false,
@@ -153,16 +154,15 @@ export default function GoldRateButton() {
       },
     },
     scales: {
-      // cast to any to satisfy the Chart.js TS scale typing (safe and common workaround)
       x: {
         display: true,
         title: {
           display: true,
-          text: "Time (seconds)", // straight font label with parentheses
+          text: "Time (seconds)",
           font: { weight: "normal", style: "normal" },
         },
         ticks: {
-          maxRotation: 0, // straight labels (no slant)
+          maxRotation: 0,
           autoSkip: true,
         },
       } as unknown as any,
