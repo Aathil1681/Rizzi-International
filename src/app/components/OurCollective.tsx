@@ -128,9 +128,9 @@ export default function OurCollective() {
               className="text-gray-600 leading-relaxed text-sm sm:text-base"
               variants={paragraphVariants}
             >
-              We’re not just a collection of businesses. Much like our enduring
-              legacy, we are a buzzing hub – continuously shaping and enhancing
-              the customer journey.
+              We’re more than a collective of brands. We are a dynamic hub
+              driven by design excellence and innovation, crafting premium
+              products that elevate every customer experience.
             </motion.p>
           </div>
           <motion.div

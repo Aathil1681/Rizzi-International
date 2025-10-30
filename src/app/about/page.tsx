@@ -46,7 +46,7 @@ export default function About() {
       x: ["0%", "-100%"],
       transition: {
         ease: "linear",
-        duration: 150,
+        duration: 70,
         repeat: Infinity,
       },
     });
@@ -122,7 +122,7 @@ export default function About() {
                 foundation of luxury, lifestyle, and innovation. Headquartered
                 in Dubai, the company brings together a diverse portfolio that
                 spans gold and gems, fine jewelry, watches, perfumes, cosmetics,
-                fashion, home décor, and premium services.
+                baby care items, fashion, home décor, and premium services.
               </p>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg">
                 With a vision to redefine modern luxury, Rizzi International
@@ -218,12 +218,12 @@ export default function About() {
           <div className="w-24 h-0.5 bg-brand-gold mx-auto my-4"></div>
           <p className="text-gray-600 mt-2 px-10">
             Rizzi International is a leading global enterprise specializing in
-            the export and import of luxury products. From exquisite jewelry and
-            premium watches to high-end fashion and lifestyle goods, we curate
-            and deliver only the finest quality to discerning clients worldwide.
-            Our commitment to excellence, elegance, and trust ensures that every
-            product within the Rizzi International family embodies
-            sophistication and prestige.
+            the import and export of premium products. From fine jewelry, luxury
+            watches, and high-end fashion to cosmetics, baby care essentials,
+            and lifestyle goods, we deliver exceptional quality and innovation.
+            With excellence, trust, and sophistication at our core, Rizzi
+            International continues to expand its legacy as a global hub for
+            luxury and essential product distribution.
           </p>
         </motion.div>
 
@@ -243,7 +243,7 @@ export default function About() {
             onHoverEnd={() =>
               marqueeControls.start({
                 x: ["0%", "-100%"],
-                transition: { ease: "linear", duration: 180, repeat: Infinity },
+                transition: { ease: "linear", duration: 40, repeat: Infinity },
               })
             }
           >

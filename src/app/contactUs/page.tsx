@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { MapPin, Phone } from "lucide-react";
 import { getNames } from "country-list";
 import { toast, Toaster } from "sonner";
+import { FiMail } from "react-icons/fi";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -200,36 +201,52 @@ export default function ContactPage() {
 
           <div className="mt-10 flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between md:space-x-8 space-y-12 md:space-y-0">
             {/* Left Side - Text Content */}
-            <div className="flex flex-col items-center md:items-start justify-start lg:pl-20 w-full md:w-1/2 space-y-6 md:space-y-10">
-              {/* Meet Us */}
-              <div className="text-center md:text-left">
-                <div className="flex items-center justify-center md:justify-start mb-4">
-                  <MapPin className="text-blue-600 mr-3 size-8" />
-                  <div className="mt-4">
-                    <h3 className="text-xl font-semibold ">MEET US.</h3>
-                  </div>
+            {/* Meet Us */}
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start mb-4">
+                <MapPin className="text-blue-600 mr-3 size-8" />
+                <div className="mt-4">
+                  <h3 className="text-xl font-semibold">MEET US.</h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
-                  Rizzi International
-                  <br />
-                  244/C, KKP Road, Kalmunai-01
-                  <br />
-                  P.O. BOX 32300 | Sri Lanka
-                </p>
               </div>
+              <p className="text-gray-600 leading-relaxed">
+                Rizzi International
+                <br />
+                244/C, KKP Road, Kalmunai-01
+                <br />
+                P.O. BOX 32300 | Sri Lanka
+              </p>
+            </div>
 
-              {/* Call Us */}
-              <div className="text-center md:text-left">
-                <div className="flex items-center justify-center md:justify-start mb-4">
-                  <Phone className="text-blue-600 size-7 mr-3" />
-                  <div className="mt-3">
-                    <h3 className="text-xl font-semibold">CALL US.</h3>
-                  </div>
+            {/* Call Us */}
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start mb-4">
+                <Phone className="text-blue-600 size-7 mr-3" />
+                <div className="mt-3">
+                  <h3 className="text-xl font-semibold">CALL US.</h3>
                 </div>
-                <p className="text-gray-600 leading-relaxed">
-                  Tel: +94 77 152 7111
-                </p>
               </div>
+              <p className="text-gray-600 leading-relaxed">
+                Tel: +94 77 152 7111
+              </p>
+            </div>
+
+            {/* Email Us */}
+            <div className="text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start mb-4">
+                <FiMail className="text-blue-600 size-7 mr-3" />
+                <div className="mt-3">
+                  <h3 className="text-xl font-semibold">EMAIL US.</h3>
+                </div>
+              </div>
+              <p className="text-gray-600 leading-relaxed">
+                <a
+                  href="mailto:rizziinternational@gmail.com"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  rizziinternational@gmail.com
+                </a>
+              </p>
             </div>
 
             {/* Right Side - Map */}

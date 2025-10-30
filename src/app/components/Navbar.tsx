@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { FiPhone, FiMail, FiMapPin } from "react-icons/fi";
+import { useEffect, useState } from "react";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
+import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import SearchOverlay from "./SeachOverlay";
 
 export default function Navbar() {
   const [show, setShow] = useState(true);
@@ -13,13 +14,14 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const links = [
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "About Us", href: "/about" },
     { name: "Careers", href: "/careers" },
-    { name: "Contact Us", href: "/contactUs" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   const contactInfo = [
@@ -45,7 +47,6 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  // ✅ Fixed Scroll Behavior (iPhone safe)
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
@@ -68,8 +69,9 @@ export default function Navbar() {
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
-  }, [isMobileMenuOpen]);
+    document.body.style.overflow =
+      isMobileMenuOpen || searchOpen ? "hidden" : "unset";
+  }, [isMobileMenuOpen, searchOpen]);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -178,6 +180,8 @@ export default function Navbar() {
               <AiOutlineSearch
                 size={25}
                 color={isScrolled ? "#0a0f1c" : "#ffffff"}
+                onClick={() => setSearchOpen(true)}
+                style={{ cursor: "pointer" }}
               />
               <button
                 onClick={toggleMobileMenu}
@@ -319,6 +323,12 @@ export default function Navbar() {
           </>
         )}
       </AnimatePresence>
+
+      {/* --- Search Overlay --- */}
+      <SearchOverlay
+        searchOpen={searchOpen}
+        onClose={() => setSearchOpen(false)}
+      />
 
       <style jsx>{`
         @media (max-width: 767px) {
