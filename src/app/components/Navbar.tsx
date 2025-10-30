@@ -21,7 +21,7 @@ export default function Navbar() {
     { name: "Services", href: "/services" },
     { name: "About Us", href: "/about" },
     { name: "Careers", href: "/careers" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Contact Us", href: "/contactUs" },
   ];
 
   const contactInfo = [
