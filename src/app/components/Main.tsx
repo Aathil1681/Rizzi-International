@@ -18,11 +18,6 @@ const slides = [
     desc: "Our collection blends timeless design with modern innovation.",
   },
   {
-    image: "/Jewels.jpg",
-    title: "Sophisticated Craftsmanship",
-    desc: "Each piece is curated to perfection.",
-  },
-  {
     image: "/Handbag2.jpg",
     title: "Elegance in Every Detail",
     desc: "Luxury is in the details.",
@@ -31,6 +26,11 @@ const slides = [
     image: "/Perfume.jpg",
     title: "Fragrance of Prestige",
     desc: "Experience scents that define elegance.",
+  },
+  {
+    image: "/Pampers.jpg",
+    title: "Loving Care for Baby and Planet",
+    desc: "Leak-proof protection that keeps up with your curious crawler.",
   },
 ];
 

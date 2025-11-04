@@ -17,7 +17,7 @@ export function CVUploadForm() {
 
     try {
       const formData = new FormData(formRef.current);
-      formData.append("access_key", "7592de58-a002-41d1-9278-e2d42c5eb114");
+      formData.append("access_key", "65debb8c-7bc7-447f-be75-15501fb35d36");
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",

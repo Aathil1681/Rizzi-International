@@ -38,7 +38,7 @@ const termsSections = [
   {
     icon: Globe,
     title: "Governing Law & Jurisdiction",
-    content: `These Terms are governed by the laws of the United Arab Emirates, applicable in the Emirate of Dubai. Disputes are subject to the exclusive jurisdiction of Dubai courts.`,
+    content: `These Terms are governed by the laws of the Sri Lanka, applicable in the Emirate of Dubai. Disputes are subject to the exclusive jurisdiction of Dubai courts.`,
   },
   {
     icon: Contact,

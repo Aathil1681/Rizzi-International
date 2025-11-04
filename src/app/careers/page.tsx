@@ -7,7 +7,7 @@ export default function CareerPage() {
     <div
       className="relative bg-cover bg-center bg-no-repeat text-white min-h-screen"
       style={{
-        backgroundImage: `url('https://images.pexels.com/photos/4195501/pexels-photo-4195501.jpeg')`,
+        backgroundImage: `url('/career/banner.jpeg')`,
       }}
     >
       {/* Dark overlay */}

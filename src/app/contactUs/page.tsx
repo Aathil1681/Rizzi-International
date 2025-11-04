@@ -38,7 +38,7 @@ export default function ContactPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "7592de58-a002-41d1-9278-e2d42c5eb114", // Replace with your Web3Forms API key
+          access_key: "65debb8c-7bc7-447f-be75-15501fb35d36",
           subject: "New Contact Form Submission",
           ...formData,
         }),
@@ -244,7 +244,7 @@ export default function ContactPage() {
                   href="mailto:rizziinternational@gmail.com"
                   className="hover:text-blue-600 transition-colors"
                 >
-                  rizziinternational@gmail.com
+                  info@rizziinternational.com
                 </a>
               </p>
             </div>
