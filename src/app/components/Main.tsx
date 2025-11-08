@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { Settings } from "lucide-react";
+import Image from "next/image"; // ✅ Import Next.js Image component
 
 // Slide data
 const slides = [
@@ -47,7 +48,6 @@ const slideVariants = {
 };
 
 // Loading screen
-
 const Loader = () => {
   const [showLoader, setShowLoader] = useState(true);
 
@@ -68,7 +68,7 @@ const Loader = () => {
 
       <style jsx>{`
         .gear-spin {
-          animation: spin 3s linear infinite; /* Smooth 3-second rotation */
+          animation: spin 3s linear infinite;
           transform-origin: 50% 50%;
         }
 
@@ -94,7 +94,9 @@ export default function Main() {
     const preloadImages = async () => {
       const promises = slides.map((slide) => {
         return new Promise((resolve, reject) => {
-          const img = new Image();
+          if (typeof window === "undefined") return resolve(true); // Skip on server
+
+          const img = new window.Image();
           img.src = slide.image;
           img.onload = resolve;
           img.onerror = reject;
@@ -103,6 +105,7 @@ export default function Main() {
       await Promise.all(promises);
       setIsLoading(false);
     };
+
     preloadImages();
   }, []);
 
@@ -149,11 +152,8 @@ export default function Main() {
                 x: { type: "spring", stiffness: 300, damping: 30 },
               }}
             >
-              <motion.img
-                src={slides[current].image}
-                alt="Slide Image"
-                className="w-full h-full object-cover"
-                style={{ willChange: "transform" }}
+              {/* ✅ Replaced <motion.img> with Next.js <Image> */}
+              <motion.div
                 initial={{ scale: 1 }}
                 animate={{ scale: 1.05 }}
                 transition={{ duration: 8 }}
@@ -163,7 +163,16 @@ export default function Main() {
                   if (offset.x < -50) nextSlide();
                   else if (offset.x > 50) prevSlide();
                 }}
-              />
+                className="absolute inset-0"
+              >
+                <Image
+                  src={slides[current].image}
+                  alt="Slide Image"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </motion.div>
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent sm:from-black/50" />
