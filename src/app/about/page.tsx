@@ -120,9 +120,10 @@ export default function About() {
               <p className="text-gray-700 mb-4 leading-relaxed text-sm sm:text-base md:text-lg">
                 Rizzi International is a dynamic global enterprise built on the
                 foundation of luxury, lifestyle, and innovation. Headquartered
-                in Dubai, the company brings together a diverse portfolio that
-                spans gold and gems, fine jewelry, watches, perfumes, cosmetics,
-                baby care items, fashion, home décor, and premium services.
+                in Sri Lanka, the company brings together a diverse portfolio
+                that spans gold and gems, fine jewelry, watches, perfumes,
+                cosmetics, baby care items, fashion, home décor, and premium
+                services.
               </p>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg">
                 With a vision to redefine modern luxury, Rizzi International
