@@ -106,13 +106,14 @@ export default function Navbar() {
             }}
           >
             {/* Logo */}
-            <div
+            <Link
+              href="/"
               style={{
                 visibility: isMobileMenuOpen && isMobile ? "hidden" : "visible",
               }}
             >
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Logo"
                 width={120}
                 height={40}
@@ -121,9 +122,10 @@ export default function Navbar() {
                     isScrolled || isMobileMenuOpen
                       ? "none"
                       : "brightness(0) invert(1)",
+                  cursor: "pointer",
                 }}
               />
-            </div>
+            </Link>
 
             {/* Desktop Links */}
             <div
@@ -244,7 +246,9 @@ export default function Navbar() {
                 boxShadow: "-5px 0 15px rgba(0,0,0,0.1)",
               }}
             >
-              <div
+              <Link
+                href="/"
+                onClick={() => setIsMobileMenuOpen(false)}
                 style={{
                   padding: "12px 20px",
                   display: "flex",
@@ -253,8 +257,8 @@ export default function Navbar() {
                   borderBottom: "1px solid #eee",
                 }}
               >
-                <Image src="/logo.png" alt="Logo" width={120} height={40} />
-              </div>
+                <Image src="/logo.webp" alt="Logo" width={120} height={40} />
+              </Link>
 
               <div style={{ padding: "20px", flex: 1 }}>
                 {/* Mobile nav */}

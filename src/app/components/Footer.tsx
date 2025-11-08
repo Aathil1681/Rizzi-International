@@ -6,7 +6,7 @@ import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
-  const logoUrl = "/logo.png";
+  const logoUrl = "/logo.webp";
 
   // Dynamic year rendered only on client to avoid hydration errors
   const [year, setYear] = React.useState<number | null>(null);
@@ -34,19 +34,24 @@ export default function Footer() {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
         {/* Column 1: Logo and Copyright */}
         <div className="flex flex-col items-center text-center">
-          <Image
-            src={logoUrl}
-            alt="Rizi International Logo"
-            width={80}
-            height={80}
-            className="mb-2"
-          />
-          <p className="!text-[10px] text-gray-500 leading-tight">
-            © {year ?? ""} RIZZI INTERNATIONAL. All rights reserved.
-          </p>
-          <p className="!text-[10px] text-gray-500 leading-tight">
-            Rizzi International
-          </p>
+          <Link
+            href="/"
+            className="flex flex-col items-center text-center cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src={logoUrl}
+              alt="Rizzi International Logo"
+              width={80}
+              height={80}
+              className="mb-2"
+            />
+            <p className="!text-[10px] text-gray-500 leading-tight">
+              © {year} RIZZI INTERNATIONAL. All rights reserved.
+            </p>
+            <p className="!text-[10px] text-gray-500 leading-tight">
+              Rizzi International
+            </p>
+          </Link>
         </div>
 
         {/* Column 2: Who We Are */}

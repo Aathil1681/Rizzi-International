@@ -9,27 +9,27 @@ import Image from "next/image"; // ✅ Import Next.js Image component
 // Slide data
 const slides = [
   {
-    image: "/Diamond.jpg",
+    image: "/Diamond.webp",
     title: "Experience Luxury Like Never Before",
     desc: "Discover premium products crafted for elegance and style.",
   },
   {
-    image: "/Handbag3.jpg",
+    image: "/Handbag3.webp",
     title: "Timeless Designs",
     desc: "Our collection blends timeless design with modern innovation.",
   },
   {
-    image: "/Handbag2.jpg",
+    image: "/Handbag2.webp",
     title: "Elegance in Every Detail",
     desc: "Luxury is in the details.",
   },
   {
-    image: "/Perfume.jpg",
+    image: "/Perfume.webp",
     title: "Fragrance of Prestige",
     desc: "Experience scents that define elegance.",
   },
   {
-    image: "/Pampers.jpg",
+    image: "/Pampers.webp",
     title: "Loving Care for Baby and Planet",
     desc: "Leak-proof protection that keeps up with your curious crawler.",
   },

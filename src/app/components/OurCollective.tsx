@@ -68,27 +68,27 @@ function ImageCard({ src, title, className }: ImageCardProps) {
 
 const collectiveItems = [
   {
-    src: "https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg",
+    src: "https://images.pexels.com/photos/336372/pexels-photo-336372.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "RETAIL",
   },
   {
-    src: "https://images.pexels.com/photos/2800121/pexels-photo-2800121.jpeg",
+    src: "https://images.pexels.com/photos/2800121/pexels-photo-2800121.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "DISTRIBUTION",
   },
   {
-    src: "https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg",
+    src: "https://images.pexels.com/photos/135620/pexels-photo-135620.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "FMCG",
   },
   {
-    src: "https://images.pexels.com/photos/28251935/pexels-photo-28251935.jpeg",
+    src: "https://images.pexels.com/photos/28251935/pexels-photo-28251935.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "MALLS",
   },
   {
-    src: "https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg",
+    src: "https://images.pexels.com/photos/1028599/pexels-photo-1028599.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "HEALTH & LEISURE",
   },
   {
-    src: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg",
+    src: "https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=800",
     title: "ASSOCIATES & JVs",
   },
 ];
@@ -141,6 +141,7 @@ export default function OurCollective() {
               src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg"
               alt="Business professionals in a meeting"
               fill
+              loading="lazy"
               style={{ objectFit: "cover" }}
             />
           </motion.div>
