@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rizziinternational.com
+
+# Sitemaps
+Sitemap: https://rizziinternational.com/sitemap.xml

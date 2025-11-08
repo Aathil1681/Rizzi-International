@@ -13,7 +13,6 @@ import {
   Contact,
 } from "lucide-react";
 
-// --- Terms Sections (No changes needed here) ---
 const termsSections = [
   {
     icon: FileText,
@@ -47,7 +46,7 @@ const termsSections = [
   },
 ];
 
-// --- Animated Section Component (No changes needed here) ---
+// --- Animated Section Component ---
 interface AnimatedSectionProps {
   icon?: React.ComponentType<LucideProps>;
   title: string;
@@ -78,7 +77,7 @@ const AnimatedSection = ({
       variants={sectionVariants}
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
-      className="flex flex-col md:flex-row items-start gap-6 mb-12 last:mb-0" // Added last:mb-0
+      className="flex flex-col md:flex-row items-start gap-6 mb-12 last:mb-0"
     >
       {Icon && (
         <div className="bg-blue-100 p-4 rounded-full border border-blue-300">
@@ -95,7 +94,7 @@ const AnimatedSection = ({
   );
 };
 
-// --- Main Page (UPDATED) ---
+// --- Main Page  ---
 export default function TermsAndConditionsPage() {
   const headerVariants: Variants = {
     hidden: { opacity: 0, y: -50 },
@@ -108,7 +107,7 @@ export default function TermsAndConditionsPage() {
 
   return (
     <AnimatePresence>
-      {/* 1. Main container with background image */}
+      {/*  Main container with background image */}
       <div
         className="relative min-h-screen antialiased"
         style={{
@@ -119,10 +118,10 @@ export default function TermsAndConditionsPage() {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* 2. Dark overlay for better text contrast */}
+        {/*  Dark overlay for better text contrast */}
         <div className="absolute inset-0 bg-black/50" />
 
-        {/* 3. Content container with relative positioning */}
+        {/* Content container with relative positioning */}
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <motion.header
             variants={headerVariants}
@@ -143,7 +142,7 @@ export default function TermsAndConditionsPage() {
             <div className="mt-6 h-1 w-24 bg-blue-500 mx-auto rounded-full"></div>
           </motion.header>
 
-          {/* 4. Main content wrapped in a white card */}
+          {/*  Main content wrapped in a white card */}
           <motion.main
             initial={{ opacity: 0, y: 50 }}
             animate={{
