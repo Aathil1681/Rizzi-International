@@ -3,41 +3,53 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import { Settings } from "lucide-react";
-import Image from "next/image"; // ✅ Import Next.js Image component
+import Image from "next/image";
 
-// Slide data
 const slides = [
   {
-    image: "/Diamond.webp",
-    title: "Experience Luxury Like Never Before",
-    desc: "Discover premium products crafted for elegance and style.",
+    image: "/sliders/Jewellery.webp",
+    title: "Luxury That Shines Brighter",
+    desc: "Discover fine jewellery crafted to perfection for every elegant moment.",
   },
   {
-    image: "/Handbag3.webp",
-    title: "Timeless Designs",
-    desc: "Our collection blends timeless design with modern innovation.",
+    image: "/sliders/Handbag.webp",
+    title: "Redefine Your Style",
+    desc: "Premium handbags designed for confidence, class, and everyday elegance.",
   },
   {
-    image: "/Handbag2.webp",
-    title: "Elegance in Every Detail",
-    desc: "Luxury is in the details.",
+    image: "/sliders/Perfume1.webp",
+    title: "Unforgettable Fragrance",
+    desc: "A signature scent that speaks before you do.",
   },
   {
-    image: "/Perfume.webp",
-    title: "Fragrance of Prestige",
-    desc: "Experience scents that define elegance.",
+    image: "/sliders/Cosmetic.webp",
+    title: "Beauty That Inspires",
+    desc: "High-performance cosmetics for a flawless, radiant look.",
   },
   {
-    image: "/Pampers.webp",
-    title: "Loving Care for Baby and Planet",
-    desc: "Leak-proof protection that keeps up with your curious crawler.",
+    image: "/sliders/Cosmetic1.webp",
+    title: "Glow Like Never Before",
+    desc: "Skincare essentials made to nourish, protect, and enhance.",
+  },
+  {
+    image: "/sliders/Cosmetic2.webp",
+    title: "Bold. Beautiful. You.",
+    desc: "Express yourself with premium cosmetics crafted for all skin tones.",
+  },
+  {
+    image: "/sliders/Luvra.webp",
+    title: "Gentle Care for Growing Babies",
+    desc: "Soft, breathable diapers that keep your baby comfortable all day.",
+  },
+  {
+    image: "/sliders/Luvra1.webp",
+    title: "Protection Parents Trust",
+    desc: "Leak-proof performance designed for active little explorers.",
   },
 ];
 
 const slideCount = slides.length;
 
-// Animation variants
 const slideVariants = {
   enter: (direction: number) => ({ x: direction > 0 ? "100%" : "-100%" }),
   center: { zIndex: 1, x: 0 },
@@ -47,44 +59,6 @@ const slideVariants = {
   }),
 };
 
-// Loading screen
-const Loader = () => {
-  const [showLoader, setShowLoader] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowLoader(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (!showLoader) return null;
-
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-white z-50">
-      <div className="relative w-20 h-20">
-        <div className="absolute inset-0 flex items-center justify-center gear-spin">
-          <Settings className="w-16 h-16 text-blue-900" />
-        </div>
-      </div>
-
-      <style jsx>{`
-        .gear-spin {
-          animation: spin 3s linear infinite;
-          transform-origin: 50% 50%;
-        }
-
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-      `}</style>
-    </div>
-  );
-};
-
 export default function Main() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
@@ -92,16 +66,16 @@ export default function Main() {
 
   useEffect(() => {
     const preloadImages = async () => {
-      const promises = slides.map((slide) => {
-        return new Promise((resolve, reject) => {
-          if (typeof window === "undefined") return resolve(true); // Skip on server
-
-          const img = new window.Image();
-          img.src = slide.image;
-          img.onload = resolve;
-          img.onerror = reject;
-        });
-      });
+      const promises = slides.map(
+        (slide) =>
+          new Promise((resolve, reject) => {
+            if (typeof window === "undefined") return resolve(true);
+            const img = new window.Image();
+            img.src = slide.image;
+            img.onload = resolve;
+            img.onerror = reject;
+          })
+      );
       await Promise.all(promises);
       setIsLoading(false);
     };
@@ -135,9 +109,7 @@ export default function Main() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
-      {isLoading ? (
-        <Loader />
-      ) : (
+      {!isLoading && (
         <>
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -152,7 +124,6 @@ export default function Main() {
                 x: { type: "spring", stiffness: 300, damping: 30 },
               }}
             >
-              {/* ✅ Replaced <motion.img> with Next.js <Image> */}
               <motion.div
                 initial={{ scale: 1 }}
                 animate={{ scale: 1.05 }}
@@ -174,10 +145,8 @@ export default function Main() {
                 />
               </motion.div>
 
-              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent sm:from-black/50" />
 
-              {/* Text content */}
               <div className="absolute top-1/4 left-4 sm:left-6 px-4 max-w-xl">
                 <motion.h1
                   key={current}
@@ -189,6 +158,7 @@ export default function Main() {
                 >
                   {slides[current].title}
                 </motion.h1>
+
                 <motion.p
                   key={current + "desc"}
                   initial={{ y: 20, opacity: 0 }}
@@ -203,21 +173,20 @@ export default function Main() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Buttons */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 left-4 sm:left-6 -translate-y-1/2 z-30 text-white hover:text-gray-300 text-3xl sm:text-4xl md:text-5xl"
+            className="absolute top-1/2 left-4 sm:left-6 -translate-y-1/2 z-30 text-white/70 hover:text-gray-300 text-3xl sm:text-3xl md:text-4xl"
           >
             <FaChevronLeft />
           </button>
+
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 right-4 sm:right-6 -translate-y-1/2 z-30 text-white hover:text-gray-300 text-3xl sm:text-4xl md:text-5xl"
+            className="absolute top-1/2 right-4 sm:right-6 -translate-y-1/2 z-30 text-white/70 hover:text-gray-300 text-3xl sm:text-3xl md:text-4xl"
           >
             <FaChevronRight />
           </button>
 
-          {/* Scroll Indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -227,6 +196,7 @@ export default function Main() {
             <span className="text-white text-sm sm:text-base font-medium tracking-wider">
               Scroll Down
             </span>
+
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -244,7 +214,6 @@ export default function Main() {
             </motion.div>
           </motion.div>
 
-          {/* Navigation Dots */}
           <div className="absolute bottom-10 w-full flex justify-center gap-3 z-30">
             {slides.map((_, i) => (
               <div
