@@ -7,42 +7,42 @@ import Image from "next/image";
 
 const slides = [
   {
-    image: "/Jewellery.webp",
+    image: "/sliders/Jewellery.webp",
     title: "Luxury That Shines Brighter",
     desc: "Discover fine jewellery crafted to perfection for every elegant moment.",
   },
   {
-    image: "/Handbag.webp",
+    image: "/sliders/Handbag.webp",
     title: "Redefine Your Style",
     desc: "Premium handbags designed for confidence, class, and everyday elegance.",
   },
   {
-    image: "/Perfume1.webp",
+    image: "/sliders/Perfume1.webp",
     title: "Unforgettable Fragrance",
     desc: "A signature scent that speaks before you do.",
   },
   {
-    image: "/Cosmetic.webp",
+    image: "/sliders/Cosmetic.webp",
     title: "Beauty That Inspires",
     desc: "High-performance cosmetics for a flawless, radiant look.",
   },
   {
-    image: "/Cosmetic1.webp",
+    image: "/sliders/Cosmetic1.webp",
     title: "Glow Like Never Before",
     desc: "Skincare essentials made to nourish, protect, and enhance.",
   },
   {
-    image: "/Cosmetic2.webp",
+    image: "/sliders/Cosmetic2.webp",
     title: "Bold. Beautiful. You.",
     desc: "Express yourself with premium cosmetics crafted for all skin tones.",
   },
   {
-    image: "/Luvra.webp",
+    image: "/sliders/Luvra.webp",
     title: "Gentle Care for Growing Babies",
     desc: "Soft, breathable diapers that keep your baby comfortable all day.",
   },
   {
-    image: "/Luvra1.webp",
+    image: "/sliders/Luvra1.webp",
     title: "Protection Parents Trust",
     desc: "Leak-proof performance designed for active little explorers.",
   },
