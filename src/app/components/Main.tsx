@@ -17,7 +17,7 @@ const slides = [
     desc: "Premium handbags designed for confidence, class, and everyday elegance.",
   },
   {
-    image: "/sliders/Perfume1.webp",
+    image: "/sliders/perfume1.webp",
     title: "Unforgettable Fragrance",
     desc: "A signature scent that speaks before you do.",
   },
