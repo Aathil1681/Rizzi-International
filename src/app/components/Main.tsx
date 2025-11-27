@@ -140,8 +140,10 @@ export default function Main() {
                   src={slides[current].image}
                   alt="Slide Image"
                   fill
-                  className="object-cover"
+                  className="object-cover image-optimize"
                   priority
+                  quality={85}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                 />
               </motion.div>
 
