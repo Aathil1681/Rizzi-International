@@ -13,22 +13,30 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Rizzi International | Your Shipping Partner",
+  metadataBase: new URL("https://rizziinternational.com"),
+
+  title: {
+    default: "Rizzi International | Your Shipping Partner",
+    template: "%s | Rizzi International",
+  },
+
   description:
-    "Rizzi International provides professional shipping, logistics, and cargo services with trusted global delivery solutions.",
+    "Rizzi International provides professional shipping, logistics, and cargo solutions with reliable international delivery services.",
+
   keywords: [
-    "shipping",
-    "cargo",
-    "logistics",
-    "freight services",
     "Rizzi International",
-    "Dubai shipping",
+    "shipping company",
+    "logistics company",
+    "cargo services",
+    "freight forwarding",
+    "international shipping",
+    "clearing and forwarding",
   ],
 
   openGraph: {
-    title: "Rizzi International",
+    title: "Rizzi International | Your Shipping Partner",
     description:
-      "Reliable shipping, cargo, and logistics services trusted worldwide.",
+      "Reliable logistics, cargo, and shipping services trusted across global trade routes.",
     url: "https://rizziinternational.com",
     siteName: "Rizzi International",
     images: [
@@ -39,13 +47,12 @@ export const metadata: Metadata = {
         alt: "Rizzi International",
       },
     ],
-    locale: "en_US",
     type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Rizzi International",
+    title: "Rizzi International | Your Shipping Partner",
     description:
       "Reliable shipping, cargo, and logistics services trusted worldwide.",
     images: ["/ogimage.jpg"],
@@ -53,6 +60,20 @@ export const metadata: Metadata = {
 
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
 };
 
