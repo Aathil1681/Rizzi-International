@@ -4,6 +4,29 @@ import { useEffect, useState } from "react";
 import Main from "./components/Main";
 import Services from "./components/Services";
 import { Settings } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Rizzi International | Reliable Shipping & Cargo Services",
+  description:
+    "Rizzi International offers professional shipping, logistics, and cargo services. Trusted for fast and secure international delivery.",
+  openGraph: {
+    title: "Rizzi International | Reliable Shipping & Cargo Services",
+    description:
+      "Rizzi International offers professional shipping, logistics, and cargo services worldwide.",
+    url: "https://rizziinternational.com",
+    siteName: "Rizzi International",
+    images: [
+      {
+        url: "/ogimage.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Rizzi International",
+      },
+    ],
+    type: "website",
+  },
+};
 
 if (typeof window !== "undefined") {
   const script = document.createElement("script");
@@ -35,7 +58,6 @@ const Loader = () => {
           animation: spin 3s linear infinite;
           transform-origin: 50% 50%;
         }
-
         @keyframes spin {
           from {
             transform: rotate(0deg);
@@ -70,10 +92,29 @@ export default function Home() {
 
       {loaded && (
         <>
-          <div className="">
-            <Main />
-          </div>
+          <Main />
           <Services />
+
+          {/* JSON-LD structured data for services */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Service",
+                serviceType: [
+                  "Luxury Shipping",
+                  "Private Warehousing",
+                  "Exclusive Logistics",
+                ],
+                provider: {
+                  "@type": "Organization",
+                  name: "Rizzi International",
+                  url: "https://rizziinternational.com",
+                },
+              }),
+            }}
+          />
         </>
       )}
     </div>

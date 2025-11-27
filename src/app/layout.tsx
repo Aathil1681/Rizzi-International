@@ -75,13 +75,15 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+
+  alternates: {
+    canonical: "https://rizziinternational.com",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
@@ -89,6 +91,24 @@ export default function RootLayout({
         {children}
         <ScrollTopButton />
         <Footer />
+
+        {/* JSON-LD Organization structured data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Rizzi International",
+              url: "https://rizziinternational.com",
+              logo: "https://rizziinternational.com/favicon.ico",
+              sameAs: [
+                "https://www.linkedin.com/company/rizziinternational",
+                "https://www.facebook.com/rizziinternational",
+              ],
+            }),
+          }}
+        />
       </body>
     </html>
   );

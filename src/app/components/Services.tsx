@@ -63,7 +63,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Render the OurCollective section below Services */}
       <OurCollective />
     </>
   );
